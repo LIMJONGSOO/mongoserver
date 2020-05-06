@@ -9,7 +9,7 @@ const cors = require('cors')
 const MONGO_URL = 'mongodb+srv://MongoBookMark:j1357915@cluster0-ljgc0.mongodb.net/test?retryWrites=true&w=majority';
 
 var index = require('./routes/index');
-var board = require('./routes/board');
+var bookmark = require('./routes/bookmark');
  
 var app = express();
 const PORT = 4000;

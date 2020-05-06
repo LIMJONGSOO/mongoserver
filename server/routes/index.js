@@ -1,7 +1,7 @@
 const express = require('express');
-const board = require('./board');
+const bookmark = require('./bookmark');
  
 const router = express.Router();
-router.use('/board',board);
+router.use('/bookmark',bookmark);
  
 module.exports =  router;

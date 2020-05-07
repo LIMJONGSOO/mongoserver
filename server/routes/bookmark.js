@@ -8,20 +8,6 @@ var exec = require('child_process').exec;
 var child;
 
 router.post('/', (req, res) => {
-  if (req.body.username === "") {
-    return res.status(400).json({
-      error: "EMPTY USERNAME",
-      code: 2
-    });
-  }
- 
-  if (req.body.contents === "") {
-    return res.status(400).json({
-      error: "EMPTY CONTENTS",
-      code: 2
-    });
-  }
-
   const ogDatas = {
     title : '',
     description: '',
@@ -60,11 +46,11 @@ router.post('/', (req, res) => {
       });
     });
   } else {
-    let bookMark = new BookMakr({
+    let bookMark = new BookMark({
       type: req.body.type,
       name : req.body.name,
       upperDirectory: req.body.directory,
-      url : req.body.url,
+      url : '',
       og_title : '',
       og_description : '',
       og_image : '',
@@ -87,8 +73,8 @@ router.get('/', (req, res) => {
 });
 
 // bookmark 조회
-router.get('/:id', (req, res) => {
-  BookMark.findById(req.params.id, (err, bookmark) => {
+router.get('/:upperDirectory', (req, res) => {
+  BookMark.find({"upperDirectory":req.params.upperDirectory}, (err, bookmark) => {
     if (err) return res.status(500).send("bookmark 조회 실패");
     if (!bookmark) return res.status(404).send("bookmark 없음.");
     res.status(200).send(bookmark);

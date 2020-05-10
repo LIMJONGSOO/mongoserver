@@ -12,12 +12,12 @@ var index = require('./routes/index');
 var bookmark = require('./routes/bookmark');
  
 var app = express();
-const PORT = 4000;
+const PORT = 8080;
  
 // key define
 const optionsForHTTPS = {
-  key : fs.readFileSync('server/keys/private.pem'),
-  cert : fs.readFileSync('server/keys/public.pem')
+  key : fs.readFileSync('keys/private.pem'),
+  cert : fs.readFileSync('keys/public.pem')
 };
 
 //conncet to mongodb server

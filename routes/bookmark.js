@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   };
 
   if (req.body.url) {
-    const command = "node ./server/crawler/crawler.js "+req.body.url;
+    const command = "node ./crawler/crawler.js "+req.body.url;
     child = exec(command, function (error, stdout, stderr) {
       stdout.split('<og>').forEach((ogData) => {
         if(ogData.indexOf('title:') != -1) {
